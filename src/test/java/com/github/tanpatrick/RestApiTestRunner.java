@@ -12,6 +12,8 @@ import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertEquals;
+
 @KarateOptions(tags = {"~@ignore"}, features = "classpath:features")
 public class RestApiTestRunner {
 
@@ -33,9 +35,10 @@ public class RestApiTestRunner {
 
     @Test
     public void runMe() {
-        Results results = Runner.parallel(getClass(), 1, "results/reports");
         try {
+            Results results = Runner.parallel(getClass(), 1, "results/reports");
             generateReport(results.getReportDir());
+            assertEquals(String.format("Test has %s failed test(s). %s", results.getFailCount(), results.getErrorMessages()), 0, results.getFailCount());
         } catch (Exception e) {
             e.printStackTrace(System.err);
         }
