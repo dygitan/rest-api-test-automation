@@ -11,8 +11,8 @@ import java.util.Optional;
 public class UserService {
 
     private List<User> users = Arrays.asList(
-            new User("Doe", "John"),
-            new User("Doe", "Jane")
+            new User("464d3975-3a59-4447-94d6-fd273600ec50", "Doe", "John"),
+            new User("d52cafcd-3f09-4304-a047-b06526ee01a0", "Doe", "Jane")
     );
 
     public List<User> getUsers() {

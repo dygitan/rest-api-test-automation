@@ -2,11 +2,11 @@
 Feature: Centralized handling of GET method
 
   Background: GET request
-    * url baseUrl + requestUrl
-    * header Accept = 'application/json'
+    Given url baseUrl + __arg.url
+    Given header Accept = 'application/json'
 
   @get_request
   Scenario:
-    * print 'Connecting to ', requestUrl
+    * print 'Connecting to ', baseUrl + url
     When method get
     Then match responseStatus == 200

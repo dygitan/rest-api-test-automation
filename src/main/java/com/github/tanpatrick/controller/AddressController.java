@@ -10,16 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.UUID;
-
 @RestController
-@RequestMapping("/api/address")
+@RequestMapping("/api/addresses")
 public class AddressController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<Address> getUserAddress(@PathVariable String id) {
         User user = userService.findUserById(id).orElse(null);
 
@@ -29,6 +27,6 @@ public class AddressController {
                     .build();
         }
 
-        return ResponseEntity.ok(new Address(String.format("Address #%s", UUID.randomUUID().toString())));
+        return ResponseEntity.ok(new Address(String.format("Address of user %s", user.toString())));
     }
 }

@@ -1,15 +1,13 @@
 package com.github.tanpatrick.model;
 
-import java.util.UUID;
-
 public class User {
 
     private String id;
     private String lastName;
     private String firstName;
 
-    public User(String lastName, String firstName) {
-        this.id = UUID.randomUUID().toString();
+    public User(String id, String lastName, String firstName) {
+        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
     }
@@ -36,5 +34,10 @@ public class User {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %s - %s", lastName, firstName, id);
     }
 }
